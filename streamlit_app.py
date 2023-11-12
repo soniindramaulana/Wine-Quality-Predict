@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 import pandas as pd
@@ -62,26 +61,9 @@ Tujuan dari penelitian ini yaitu melakukan prediksi tehadap kualitas dari anggur
 Data uji prediksi nantinya akan melebeli data menjadi salah satu dari 2 kelas yang berbeda
 yaitu kelas 1 untuk data anggur dengan kualitas yang baik lalu kelas 0 untuk data dengan kelas buruk.''')
 
-st.title("Visualisasi")
 dt = pd.read_csv('data_clean.csv')
-st.write(dt.columns)
-st.write(dt['quality'].value_counts())
-
 fitur_balance = dt.drop(columns=['quality'], axis= 1)
 target_balance = dt['quality']
-
-sns.set(style="whitegrid")
-fig, ax = plt.subplots()
-sns.countplot(data=dt, x='quality', ax=ax)
-ax.set_xticklabels(['Kualitas Buruk', 'Kualitas Baik'])
-ax.set_ylabel('Jumlah Sampel')
-ax.set_xlabel('Kategori')
-plt.figure(figsize=(10, 5))
-plt.title("Perbandingan Jumlah Wine Berkualitas Buruk Dan Baik")
-
-# Menampilkan plot dalam aplikasi Streamlit
-st.pyplot(fig)
-
 
 st.title("Prediksi")
 Fixed_Acidity = st.number_input("Kandungan Asam Tartarat (4 - 6 g/dm3): ")
